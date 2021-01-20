@@ -1,0 +1,6 @@
+//JMP Discovery Summit, 2020. A script that lives in GITHUB.
+// This script is maintained by the developer. Changes are pushed into the repo.
+
+
+ 
+dialog("Hello World");

@@ -1,0 +1,13 @@
+open("C:\Users\451516\Desktop\github_demo\JMP_Discovery_2020_git_demo\IMAGETABLE_TO_PPT.jsl");
+
+open("C:\Users\451516\Desktop\github_demo\JMP_Discovery_2020_git_demo\MET_OBJECTS_WITH_PATHS_simplified.jmp");
+
+open("C:\IMAGETABLE_TO_PPT\export_images_options.jmp");
+
+open("C:\IMAGETABLE_TO_PPT\image_importer_local.pptm");
+
+
+open("C:\IMAGETABLE_TO_PPT\ppt layout scripts\one_big_three_small.jsl");
+
+
+open("C:\IMAGETABLE_TO_PPT\ppt layout scripts\one_two_three_small.jsl");

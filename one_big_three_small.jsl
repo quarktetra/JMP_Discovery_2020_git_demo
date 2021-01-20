@@ -1,0 +1,30 @@
+image_sbig=440;image_ssmall=125; images_per_slide=4;
+if(nitems(selected_slide)==0,
+dtimages<<new column("slide_title",formula("TBD slide title"));
+dtimages<<new column("slide_number",formula(1+floor(((row()-1)/(images_per_slide)))));
+,
+
+dtimages<<new column("slide_number");:slide_number[1]=1;counter=1;
+for(rr=2,rr<=nrows(dtimages),rr++,
+	if(column(selected_slide[1])[rr]==column(selected_slide[1])[rr-1],counter++;
+		if(counter<=images_per_slide,:slide_number[rr]=:slide_number[rr-1],counter=1;	:slide_number[rr]=:slide_number[rr-1]+1)
+		,
+		:slide_number[rr]=:slide_number[rr-1]+1;counter=1
+	);
+);
+	
+
+eval(substitute(expr(dtimages<<new column("slide_title", 
+	formula( selected_slide[1]||": "||char(as column(_scol))))),
+	 expr(_scol),selected_slide[1]));
+);
+
+dtimages<<new column("image_index",formula(if(row()==1,1,if(:slide_number[row()]!=:slide_number[row()-1],1,:image_index[row()-1]+1 ))));
+
+
+dtimages<<new column("x_coord",formula(if(:image_index==1,30,650)));
+dtimages<<new column("y_coord",formula(if(:image_index<3,90,90+(35+image_ssmall)*(image_index-2))));	
+eval(substitute(expr(dtimages<<new column("image_size",formula(if(:image_index==1,_image_sbig,_image_ssmall)))),expr(_image_sbig),image_sbig,expr(_image_ssmall),image_ssmall));
+:x_coord<< delete formula();:y_coord<< delete formula();:image_size<< delete formula(); dtimages<<delete column("image_index");if(nitems(selected_ipath)==1,dtimages<<delete column("image_type"));
+
+dtimages<<new column("plot_title",formula("TBD plot title")) ;

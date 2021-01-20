@@ -1,0 +1,8 @@
+//JMP Discovery Summit, 2020. Calling a script that lives in GITHUB.
+// This is a static script distributed to users (possibly with addins.)
+// Calls a JSL file to push images to PPT. The paths of the images are required to be available in the active table.
+url="https://raw.githubusercontent.com/quarktetra/JMP_Discovery_2020_git_demo/master/IMAGETABLE_TO_PPT.jsl"||"?q="||hex(Floor(RandomUniform(2^64)));
+Eval(Parse(LoadTextFile(url)));
+//The random number attached to the link enforces reload everytime rather than using cache
+// With GitHub public, this can take up to few mins.
+// if refresh fails, restarting JMP will enforce the refresh.

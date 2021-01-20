@@ -1,0 +1,8 @@
+testmode=1;// this will put the loaded script into the test mode. Testers will be pushed down on to the loaded script:
+UiTester=expr(<<On Open( 
+:IMAGE_URL_1<<set selected();ipath_button<<click;
+button_Start_Querying<<click;
+));
+
+try(logreturned=log capture( Eval(Parse(LoadTextFile("IMAGETABLE_TO_PPT.jsl")))) );// Run the script with testers enabled.
+if(logreturned=="",print("script did not fail"), print("Script failed with this log: "||logreturned));
